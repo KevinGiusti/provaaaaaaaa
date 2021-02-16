@@ -4,7 +4,8 @@
 
 ## Sommario:
 - [Introduzione](#introduzione)
-- [Installazione](#installazione)
+- [Configurazione API Ticketmaster](#configurazione-api-ticketmaster)
+  - [Sequence Diagram Rotta “/eventi”](#sequence-diagram-rotta-eventi)
 
 ## Introduzione
 Il tema principale, da cui origina l’applicazione ivi presentata, descritta e documentata, è quello di realizzare una Filter-App dell’applicativo Ticketmaster, un noto software dedito alla gestione ed alla prenotazione di eventi musicali, teatrali, cinematografici ed artistici, reperibile presso l’indirizzo https://www.ticketmaster.it/.
@@ -22,7 +23,7 @@ e fornisce altresì le seguenti statistiche:
 * numero totale di eventi raggruppati per genere in ogni Stato
 * numero minimo, massimo e media degli eventi mensili in ogni Stato
 
-## Installazione
+## Installazione/Clone
 È possibile eseguire il download della Filter-App The Last of Events attraverso tre semplici passaggi:
 * creare una cartella sul desktop che possa ospitare l’applicativo
 * aprire il terminale nella cartella appena generata
@@ -32,5 +33,12 @@ e fornisce altresì le seguenti statistiche:
 ## Configurazione API Ticketmaster
  Le API derivate dalla pagina TM Developer di Ticketmaster, impiegate per la definizione delle classi relative all’applicativo The Last of Events, presentano la seguente struttura:
  
+ 
 
 che può essere sintetizzata mediante il seguente grafico:
+
+
+
+## Configurazione APi
+
+## Sequence Diagram Rotta “/eventi”
