@@ -43,9 +43,10 @@ e fornisce altresì le seguenti statistiche:
 
 ## Configurazione API Ticketmaster
 Le API derivate dalla pagina TM Developer di Ticketmaster, impiegate per la definizione delle classi relative all’applicativo The Last of Events, presentano la seguente struttura:
-![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/1b52be6c8a247038812cecc7aab35e5a12556a27/UML/readme%20images%231/mainn.jpg)
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/UML/readme%20images%231/mainn.jpg)
 che può essere sintetizzata mediante il seguente grafico:
-![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/1b52be6c8a247038812cecc7aab35e5a12556a27/UML/readme%20images%231/0.0.5-%23mappa%20uml%20classi.jpg)
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/UML/readme%20images%231/0.0.5-%23mappa%20uml%20classi.jpg)
 
 ## Configurazione API Ticketmaster
 Non lo so, robe che mi deve dire Rocco circa la key che altrimenti l'Univpm vive di stracci e fagioli
