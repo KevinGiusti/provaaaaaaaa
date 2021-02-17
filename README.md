@@ -6,7 +6,7 @@
 - [Introduzione](#introduzione)
 - [Installazione](#installazione)
 - [Struttura API Ticketmaster](#configurazione-api-ticketmaster)
-- [Configurazione API Ticketmaster](#configurazione-api-ticketmaster)
+- [Configurazione](#configurazione)
 - [UML](#uml)
   - [Use Case Diagram](#use-Case-diagram)
   - [Class Diagram](#class-diagram)
@@ -39,8 +39,20 @@ e fornisce altresì le seguenti statistiche:
 ## Installazione
 È possibile eseguire il download della Filter-App The Last of Events attraverso tre semplici passaggi:
 * creare una cartella sul desktop che possa ospitare l’applicativo
-* aprire il terminale nella cartella appena generata
+* aprire il terminale nella cartella appena generata (si consiglia l'uso di GitBash)
 * digitare:  `git clone https://github.com/KevinGiusti/progetto-OOP`
+
+Alternativamente, è possibile impiegare l'ambiente di sviluppo Eclipse operando come segue;
+* creare un nuovo account su GitHub (in allegato, l'indirizzo web https://github.com/)
+* creare una cartella sul desktop che ospiti l'applicazione The last of Events
+* avviare il software Eclipse
+* selezionare la voce `Window > Show View > Other... > Git > Git Repositories`
+* una volta selezionata la voce `Git Repositories`, cliccare su `Clone a Repository...'
+* inserire, poi, l'indirizzo `https://github.com/KevinGiusti/progetto-OOP` nella voce `URI`(Uniform resource Identifier)
+* una volta inserito l'`URI`, inserire le credenziali di accesso GitHub alle voci `User` e `Password` e selezionare `next` assicurandovi che, alla voce `Connection`, la casella `Protocol` sia impostata su `https`
+* dopo aver cliccato `next`, assicuratevi che il Branch `main` sia auto-selezionato e, alla voce `Tag fetching strategy`, impostare `When fetching a commit, also fetch his tags`
+* infine, alla voce `Destination` cliccare su `browse` e selezionare la cartella, precedentemente creata, che ospiterà il software
+* per concludere, selezionare `Finish` ed il download del progetto sarà concluso.
 
 ## Struttura API Ticketmaster
 Le API derivate dalla pagina TM Developer di Ticketmaster, impiegate per la definizione delle classi relative all’applicativo The Last of Events, presentano la seguente struttura:
@@ -49,7 +61,7 @@ che può essere sintetizzata mediante il seguente grafico:
 
 ![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/UML/readme%20images%231/0.0.5-%23mappa%20uml%20classi.jpg)
 
-## Configurazione API Ticketmaster
+## Configurazione
 Non lo so, robe che mi deve dire Rocco circa la key che altrimenti l'Univpm vive di stracci e fagioli
 
 ## UML
@@ -78,8 +90,22 @@ Mese | statistica che mostra il numero minimo, massimo e la media degli eventi, 
 Periodo personalizzato | statistica che mostra il numero minimo, massimo e la media degli eventi, che soddisfano i criteri di ricerca precedenti, in ciascuna delle ripetizioni del periodo personalizzato; l'ultima ripetizione del periodo scelto è quella che non supera il 364-esimo giorno dell'anno della data iniziale inserita dall'utente
 
 ### Class Diagram
-inserisci il diagramma uml delle classi in HD
+--------------------------------------------------------------------------inserisci il diagramma uml delle classi in HD
 
 percorso e packages dell'applicativo:
 
 ![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/UML/ProjectClassDiagram/ProjectClassDiagram_jpeg/Package%20jpg/Package%20Structure0001.jpg)
+
+### Sequence Diagram
+--------------------------------------------------------------------------inserisci il diagramma uml delle sequenze
+
+### Sequence Diagram Rotta “/eventi”
+--------------------------------------------------------------------------inserisci il diagramma uml delle sequenze
+
+## Rotte
+Nel caso in cui l'interazione tra l'utente ed il software 'The last of Events' non avvenga tramite GUI, ovvero tramite Graphic User Interface, è possibile impiegare un qualsiasi tool per il testing delle Application Programming Interface come, ad esempio, Postman , reperibile all'indirizzo https://www.postman.com/downloads/, per effettuare delle chiamate API.
+
+In particolare, le richieste che l'utente può effettuare tramite Postman devono essere all'indirizzo: `localhost:8080`, dove `localhost` è l'interfaccia di loopback necessaria per indirizzare verso se stessi i dati e `8080` è la porta di accesso del server locale;
+
+Inoltre, all' indirizzo `localhost:8080` inserito nella barra delle richieste di Postman, è necessario specificare metodo di trasferimento dati e rotta.
+### Filtri e Stats Richiesti
