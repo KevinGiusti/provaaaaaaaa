@@ -14,6 +14,7 @@
   - [Sequence Diagram Rotta “/eventi”](#sequence-diagram-rotta-eventi)
 - [Rotte](#rotte)
   - [Filtri e Stats Richiesti](#filtri-e-stats-richiesti)
+  - [Body della rotta e risposta JSON](#body-della-rotta-e-risposta-json)
   - [Filtri e Stats aggiuntivi](#filtri-e-stats-aggiuntivi)
 - [Test](#test)
 - [Documentazione](#documentazione)
@@ -109,3 +110,81 @@ In particolare, le richieste che l'utente può effettuare tramite Postman devono
 
 Inoltre, all' indirizzo `localhost:8080` inserito nella barra delle richieste di Postman, è necessario specificare metodo di trasferimento dati e rotta.
 ### Filtri e Stats Richiesti
+Poichè, nel documento descrittovo del progetto, è esplicitamente richiesto che:
+>L'applicazione deve permettere all'utente finale di: cercare gli eventi di un determinato stato, visualizzare delle statistiche per ogni stato di 
+Australia e Nuova Zelanda **con un'unica richiesta**
+
+allora **l'unica** rotta definita per l'applicativo 'The Last of Events' è: `/eventi`, ovvero:
+Metodo | Rotta | Descrizione
+---- | ---- | ----
+`POST` | `/eventi` | restituisce un JSONArray contenente le informazioni relative ad eventi, che possono essere filtrati per uno o più stati e/o per uno o più generi, e statistiche relative a numero totale di eventi per ogni stato, numero totale di eventi raggruppati per genere e massimo, minimo e media eventi mensili o in un periodo personalizzato
+
+### Body della rotta e risposta JSON
+Dal punto di vista tecnico, i parametri, inseriti per effettuare una ricerca relativa agli eventi, devono essere passati all'applicazione Spring, che è in esecuzione sul server locale,  tramite il **body** della rotta `localhost8080/eventi` che , a sua volta, deve essere configurato sottoforma di **file JSON** (JavaScript Object Notation), in formato `raw`, contenente   tutte le coppie "key":"value" necessarie per il filtraggio delle informazioni.
+Di seguito, è riportato un esempio grafico di quanto appena descritto:
+```
+{
+    "stati": ["Victoria, AU","Queensland, AU"],
+    "generi": [],
+    "periodo": ["2021-01-01","2021-03-01"]
+}
+```
+Alla richiesta appena specificata otteniamo, in risposta dal software 'The Last Of Tickets', il seguente file JSON:
+```
+{
+    "numero totale eventi": {
+        "in Victoria": 2,
+        "in Queensland": 1
+    },
+    "statistiche periodiche di eventi": {
+        "in Victoria": {
+            "minimo": 0,
+            "massimo": 2,
+            "media": 0.29
+        },
+        "in Queensland": {
+            "minimo": 0,
+            "massimo": 1,
+            "media": 0.14
+        }
+    },
+    "numero eventi per il genere": {
+        "Pop": 3
+    },
+    "eventi": [
+        {
+            "nome": "Backstreet Boys",
+            "url": "http://resale.ticketmaster.com.au/Resale/Tickets/2797641",
+            "citta": "Melbourne",
+            "stato": "Victoria",
+            "paese": "Australia",
+            "data": "2021-05-03",
+            "ora": "19:30:00",
+            "genere": "Pop",
+            "sottoGenere": "Pop Rock"
+        },
+        {
+            "nome": "Backstreet Boys",
+            "url": "http://resale.ticketmaster.com.au/Resale/Tickets/2805221",
+            "citta": "Melbourne",
+            "stato": "Victoria",
+            "paese": "Australia",
+            "data": "2021-05-04",
+            "ora": "19:30:00",
+            "genere": "Pop",
+            "sottoGenere": "Pop Rock"
+        },
+        {
+            "nome": "Backstreet Boys",
+            "url": "http://resale.ticketmaster.com.au/Resale/Tickets/2797640",
+            "citta": "Boondall",
+            "stato": "Queensland",
+            "paese": "Australia",
+            "data": "2021-05-01",
+            "ora": "19:30:00",
+            "genere": "Pop",
+            "sottoGenere": "Pop Rock"
+        }
+    ]
+}
+```
