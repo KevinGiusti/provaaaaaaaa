@@ -5,6 +5,7 @@
 ## Sommario:
 - [Introduzione](#introduzione)
 - [Installazione](#installazione)
+- [Struttura API Ticketmaster](#configurazione-api-ticketmaster)
 - [Configurazione API Ticketmaster](#configurazione-api-ticketmaster)
 - [UML](#uml)
   - [Use Case Diagram](#use-Case-diagram)
@@ -41,7 +42,7 @@ e fornisce altresì le seguenti statistiche:
 * aprire il terminale nella cartella appena generata
 * digitare:  `git clone https://github.com/KevinGiusti/progetto-OOP`
 
-## Configurazione API Ticketmaster
+## Struttura API Ticketmaster
 Le API derivate dalla pagina TM Developer di Ticketmaster, impiegate per la definizione delle classi relative all’applicativo The Last of Events, presentano la seguente struttura:
 ![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/UML/readme%20images%231/mainn.jpg)
 che può essere sintetizzata mediante il seguente grafico:
