@@ -206,3 +206,20 @@ key | valori accettabili
 `periodo` | ogni periodo di tempo desiderato
 
 **Eccezioni e bad-values**
+Quando si effettua una richiesta alla Filter-App 'The Last of Events' mediante un tester di API quale Postman, è possibile che, nel `Body` della richiesta stessa, ad una o più `key` vengano associati dei `value` che generano delle eccezioni nel programma;
+
+in questi casi, l'applicazione gestisce l'eccezione occorsa e restituisce un JSON con un'unica `key`, nota come `Attenzione` o come `Errore`, ed un unico `value`, che descrive all'utente sia l'errore commesso e sia eventuali soluzioni al problema. 
+Key | Bad-value | Eccezione | Risposta dell'applicazione
+---- | ---- | ---- | ----
+`"stati"` | `:[]` | EventiException() |  `"Attenzione": "Non è stato specificato nessuno stato. Lista stati: [New South Wales, Queensland, South Australia, Tasmania, Victoria, Western Australia, New Zealand]"`
+`"stati"` | `:["Victoria, "]` | EventiException() | `"Errore": "Il formato consentito nel vettore 'stati' è il seguente: 'Stato, Paese'"`
+`"stati"` | `:[" , AU"]` | EventiException() | `"Attenzione": "Nessuno stato inizia per  . Lista stati: [New South Wales, Queensland, South Australia, Tasmania, Victoria, Western Australia, New Zealand]"`
+`"stati"` | `:["Victoria, IT"]` | EventiException() | `"Errore": "Lo stato IT non è disponibile"`
+`"stati"` | `:["Victoria, NZ"]` | EventiException() | `"Errore": "Lo stato Victoria non appartiene al paese NZ"`
+`"generi"` | `:["123"]` | EventiException() | `"Attenzione": "Nessun genere inizia per 1. Lista generi: [Accounting/General, Action/Adventure,`ecc...
+`"periodo"` | `:["2021-01-01"]` | EventiException() | `"Attenzione": "è possibile inserire solo due date, ovvero la data di inizio e la data di fine"`
+`"periodo"` | `:["2021-01-01","2021-03-01", "2021-07-01"]` | EventiException() | `"Attenzione": "è possibile inserire solo due date, ovvero la data di inizio e la data di fine"`
+`"periodo"` | `:["2021-12-01","2021-03-01"]` | EventiException() | `"Errore": "la prima data deve essere minore della seconda data inserita"`
+`"periodo"` | `:["2021-00-01","2021-03-01"]` | EventiException() | `"Errore": "Il formato consentito per il mese nel vettore 'periodo' è il seguente: da 01 a 12"`
+`"periodo"` | `:["2021-01-75","2021-03-01"]` | EventiException() | `"Errore": "Il formato consentito per il giorno nel vettore 'periodo' è il seguente: da 01 a 31 a seconda del mese"`
+`"periodo"` | `:["Shrek","2021-03-01"]` | EventiException() | `"Errore": "Il formato consentito nel vettore 'periodo' è il seguente: 'yyyy-mm-dd'"`
