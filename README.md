@@ -18,7 +18,7 @@
   - [Chiavi e Valori](#chiavi-e-valori)
 - [JUnit Test](#junit-test)
 - [Documentazione JavaDoc](#documentazione-javadoc)
-- [Software Utilizzati](#spftware-utilizzati)
+- [Software Utilizzati](#software-utilizzati)
 - [Autori](#autori)
  
 ## Introduzione
