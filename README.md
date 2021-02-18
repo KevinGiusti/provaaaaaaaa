@@ -17,7 +17,7 @@
   - [Body della rotta e risposta JSON](#body-della-rotta-e-risposta-json)
   - [Chiavi e Valori](#chiavi-e-valori)
 - [JUnit Test](#junit-test)
-- [Documentazione](#documentazione)
+- [Documentazione JavaDoc](#documentazione-javadoc)
 - [Software Utilizzati](#spftware-utilizzati)
 - [Autori](#autori)
  
@@ -276,4 +276,20 @@ in particolare:
 * **sortSelectedEventsTest():** Metodo per testing del metodo sortSelectedEvents che controlla se il sorting di un array di interi è svolto nel modo corretto
 in sintesi, datesStatisticsTest() invoca il metodo assertEquals(), i cui parametri sono il risultato del metodo sortSelectedEvents ed un array ordinato nel modo corretto
 
-## Documentazione
+## Documentazione JavaDoc
+Ogni package, classe, attributo e metodo che costituisce il software 'The Last of Events' è interamente e completamente documentato attraverso l'utilizzo della JavaDoc;
+
+In particolare, per accedere alla documentazione tramite pagina HTML, è necessario seguire il percorso:
+`ticketmaster > doc > index-files > index-1.html`.
+
+Una volta aperta la pagina `index-1.html`, è possibile accedere alla documentazione dell'intero codice selezionando:
+* la voce `OVERVIEW` che descrive ogni package del progetto
+* la voce `TREE` che descrive la gerarchia delle classi del progetto
+* la voce `INDEX` che permette di cercare packages, classi, attributi e metodi in base al carattere iniziale selezionato
+* la voce `INDEX > All Classes` che descrive ogni classe del progetto
+* la voce `INDEX > All Classes > Exception Summary` che descrive la classe di gestione eccezioni del progetto
+
+Ovviamente, cliccando il nome di una qualsiasi classe nella pagina `index-1.html`, sarà possibile accedere ad informazioni quali metodi, attributi, package di appartenenza, metodo costruttore, autore della classe, ecc...
+
+## Software Utilizzati
+La lista di software & tools impiegati per realizzare la Filter-App è la seguente:
