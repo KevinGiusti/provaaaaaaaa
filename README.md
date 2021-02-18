@@ -326,3 +326,17 @@ Autore | Ruolo | Contributo
 Rocco Anzivino | Sviluppo filtro Stati, sviluppo statistica relativa al numero massimo degli eventi in ciascuno Stato, sviluppo Scanner Stati, sviluppo eccezioni e controlli, produzione JavaDoc, ottimizzazione ed estensione Parser e Controller, sviluppo della base del codice, sviluppo dell'intera GUI | contributo: 1/3
 Kevin Giusti | Sviluppo filtro periodo personalizzato, sviluppo statistiche relative a minimo, massimo e media eventi in un mese o periodo personalizzato a seconda degli Stati selezionati, sviluppo eccezioni e controlli, produzione JavaDoc, estensione Parser e Controller, produzione dell'intero readme, diagramma uml delle classi dell'api e dei casi d'uso, test JUnit 5 | contributo: 1/3
 Kejvin Skiti | Sviluppo filtro generi, sviluppo statistica relativa al numero massimo di eventi raggruppati per genere in ogni Stato, sviluppo Scanner generi, sviluppo eccezioni e controlli, estensione Parser e Controller, diagramma uml delle classi e intera produzione del diagramma uml di sequenza | contributo: 1/3
+
+**Nota:** il numero di `commit` effettuati da ciascun membro del team **non** è indice del contributo apportato allo sviluppo dell'applicativo poichè, impiegando il software TeamViewer, molto frequentemente è accaduto che l'operazione di `push` venisse effettuata dal pc ospitante la condivisione dello schermo anche se, effettivamente, lo sviluppo del codice fosse imputabile all'operato di più persone.
+
+<p>
+</br>
+</br>
+</p>
+
+<p>
+ Gli sviluppatori</br>
+ <i>Rocco Anzivino</i></br>
+ <i>Kevin Giusti</i></br>
+ <i>Kejvin Skiti</i></br>
+ </p>
