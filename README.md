@@ -17,6 +17,10 @@
   - [Filtri e Stats Richiesti](#filtri-e-stats-richiesti)
   - [Body della rotta e risposta JSON](#body-della-rotta-e-risposta-json)
   - [Chiavi e Valori](#chiavi-e-valori)
+- [Rotte GUI](#rotte-gui)
+  - [Rotta /stati e risposta JSON](#rotta-/stati-e-risposta-json)
+  - [Rotta /generi e risposta JSON](#rotta-/generi-e-risposta-json)
+  - [Rotta per selezionare tutti gli Stati e risposta JSON](#rotta-per-selezionare-tutti-gli-stati-e-risposta-json)
 - [JUnit Test](#junit-test)
 - [Documentazione JavaDoc](#documentazione-javadoc)
 - [GUI: Premesse](#gui-premesse)
@@ -83,12 +87,15 @@ Per concludere, nel caso si dovesse preferire l'esecuzione di 'The Last of Event
 
 ## Considerazioni Necessarie
 
-**IMPORTANTE:** Per motivi legati all'impossibilità, da parte degli sviluppatori, di divulgare una chiave ottenuta mediante previa registrazione, prima di poter impiegare l'Applicativo 'The Last of Events', indipendentemente dal fatto che si favorisca l'approccio tramite `Postman` o tramite `GUI`, è necessario accedere alla cartella `resources`, reperibile attraverso il percorso `progetto-OOP > ticketmaster > resources`, e modificare il file `APIKey.txt`, inizialmente vuoto per ogni utente che esegue l'operazione di `clone` del progetto, inserendo la propria `key` gratuita ottenuta mediante registrazione presso il sito [TM Developers](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/);
+**IMPORTANTE:**
+
+Per motivi legati all'impossibilità, da parte degli sviluppatori, di divulgare una chiave ottenuta mediante previa registrazione, prima di poter impiegare l'Applicativo 'The Last of Events', indipendentemente dal fatto che si favorisca l'approccio tramite `Postman` o tramite `GUI`, è necessario accedere alla cartella `resources`, reperibile attraverso il percorso `progetto-OOP > ticketmaster > resources`, e modificare il file `APIKey.txt`, inizialmente vuoto per ogni utente che esegue l'operazione di `clone` del progetto, inserendo la propria `key` gratuita ottenuta mediante registrazione presso il sito [TM Developers](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/);
 
 Una volta completata tale operazione, è sufficiente avviare l'`IDE Eclipse` ed eseguire il comando di `Refresh` selezionando la cartella principale del progetto, nota come `ticketmaster`, attraverso il tasto destro del mouse o touchpad.
 In questo modo, una volta avviato il software, la `key` inserita dall'utente verrà letta mediante uno scanner e, se risulterà accettabile, l'applicazione sarà completamente fruibile.
 
 **Osservazioni Finali**
+
 Nel caso si utilizzi il Sistema Operativo `Windows 10`, il file eseguibile della `GUI`, noto come `The Last Of Events.jar`, reperibile nel percorso `progetto-OOP > GUI`, permette di evitare di importare in `Eclipse` la cartella `GUI`; infatti, selezionando tale file, è possibile avviare la parte `Front-End` dell'App semplicemente lanciando l'eseguibile che, tuttavia, per funzionare correttamente, dovrà sempre essere interconnesso alla parte `Back-End` del software rappresentata mediante applicazione `Spring` in esecuzione nell'`IDE Eclipse`. 
 
 Infine, quando si impiega la Graphic User Interface per l'esecuzione di 'The Last of Events', è possibile che, nella prima finestra dell'applicativo, ovvero nella schermata Home, non compaiano i campi selezionabili o il logo dell'App; per risolvere questo tipo di inconveniente, è sufficiente scorrere, con il cursore del mouse, lungo l'intera pagina in modo che tutti i pulsanti, venendo selezionati, possano attivarsi nuovamente;
@@ -149,7 +156,7 @@ Metodo | Rotta | Descrizione
 `POST` | `/eventi` | restituisce un JSONArray contenente le informazioni relative ad eventi, che possono essere filtrati per uno o più stati e/o per uno o più generi, e statistiche relative a numero totale di eventi per ogni stato, numero totale di eventi raggruppati per genere e massimo, minimo e media eventi mensili o in un periodo personalizzato
 
 ### Body della rotta e risposta JSON
-Dal punto di vista tecnico, i parametri, inseriti per effettuare una ricerca relativa agli eventi, devono essere passati all'applicazione Spring, che è in esecuzione sul server locale,  tramite il **body** della rotta `localhost8080/eventi` che , a sua volta, deve essere configurato sottoforma di **file JSON** (JavaScript Object Notation), in formato `raw`, contenente   tutte le coppie "key":"value" necessarie per il filtraggio delle informazioni.
+Dal punto di vista tecnico, i parametri, inseriti per effettuare una ricerca relativa agli eventi, devono essere passati all'applicazione Spring, che è in esecuzione sul server locale,  tramite il **Body** della rotta `localhost8080/eventi` che , a sua volta, deve essere configurato sottoforma di **file JSON** (JavaScript Object Notation), in formato `raw`, contenente   tutte le coppie "key":"value" necessarie per il filtraggio delle informazioni.
 Di seguito, è riportato un esempio grafico di quanto appena descritto:
 ```json
 {
@@ -253,6 +260,177 @@ Key | Bad-value | Eccezione | Risposta dell'applicazione
 `"periodo"` | `:["2021-01-75","2021-03-01"]` | EventiException | `"Errore": "Il formato consentito per il giorno nel vettore 'periodo' è il seguente: da 01 a 31 a seconda del mese"`
 `"periodo"` | `:["Shrek","2021-03-01"]` | EventiException() | `"Errore": "Il formato consentito nel vettore 'periodo' è il seguente: 'yyyy-mm-dd'"`
 
+## Rotte GUI
+A seguito dell'inserimento, da parte dell'utente, mediante la Graphic User Interface, dei parametri tesi alla definizione di un filtro su Stati e generi volto ad ottenere dei risultati di ricerca specifici, affinchè l'applicativo possa produrre un output su schermo è necessario che vengano effettuate delle chiamate di tipo `GET` alle seguenti Rotte:
+
+### Rotta /stati e risposta JSON
+Chiamando, mediante il metodo `GET`, la rotta `http://localhost:8080/stati` otteniamo, in risposta dal software 'The Last Of Tickets', il seguente file JSON:
+```json
+[
+    "New South Wales",
+    "Queensland",
+    "South Australia",
+    "Tasmania",
+    "Victoria",
+    "Western Australia",
+    "New Zealand"
+]
+```
+Ovvero, otteniamo un `JSONArray` in cui, ciascun elemento, è uno dei possibili Stati di Australia e Nuova Zelanda, selezionabili dall'utente, per il filtraggio degli eventi e per il calcolo delle statistiche; in sintesi, tale richiesta non prende parametri ma ritorna un `JSONArray` contenente i valori presi, in sola lettura e mediante uno  scanner, del file Stati.csv
+
+Inoltre, nel `Body` della richiesta `HTTP` non dovrà essere specificato alcun parametro poichè, a differeza del metodo `POST`, impiegato per l'invio dei dati ad un'`API`, una chiamata di tipo `HTTP GET` viene impiegata solo ed esclusivamente per recuperare i dati da un'`API`.
+
+### Rotta /generi e risposta JSON
+Chiamando, mediante il metodo `GET`, la rotta `http://localhost:8080/generi` otteniamo, in risposta dal software 'The Last Of Tickets', il seguente file JSON:
+```json
+[
+    "Accounting/General",
+    "Action/Adventure",
+    "Actor",
+    "Added Value Vouchers",
+    "Alternative",
+    "Amusement Park",
+    "Animation",
+    "Aquarium",
+    "Aquatic Park",
+    "Aquatics",
+    "Arthouse",
+    "Artist",
+    "Athlete",
+    "Athletic Races",
+    "Audio Tour",
+    "Audio/Visual",
+    "Award Show",
+    "Badminton",
+    "Ballads/Romantic",
+    "Band",
+    "Bandy",
+    "Baseball",
+    "Basketball",
+    "Biathlon",
+    "Blues",
+    "Body Building",
+    "Boxing",
+```
+ecc...
+```json
+    "eSports",
+    "iTunes Download"
+]
+```
+Ovvero, otteniamo un `JSONArray` in cui, ciascun elemento, è uno dei possibili generi, selezionabili dall'utente, per il filtraggio degli eventi e per il calcolo delle statistiche relative a ciascuno Stato; in sintesi, tale richiesta non prende parametri ma ritorna un `JSONArray` contenente i valori presi, in sola lettura e mediante uno  scanner, del file Gtati.csv
+
+### Rotta per selezionare tutti gli Stati e risposta JSON
+
+Chiamando, mediante il metodo `GET`, la rotta 
+
+`http://localhost:8080/eventi?stati=New%20South%20Wales,%20Queensland,%20South%20Australia,%20Tasmania,%20Victoria,%20Western%20Australia,%20New%20Zealand&paesi=%20AU,%20%20AU ,%20%20AU,%20%20AU,%20%20AU,%20%20AU,%20%20NZ&generi=&periodo=2021-01-01,%202021-03-01` 
+
+otteniamo, in risposta dal software 'The Last Of Tickets', il seguente file JSON:
+```json
+ "numero totale eventi": {
+        "in New South Wales": 16,
+        "in Queensland": 1,
+        "in South Australia": 0,
+        "in Tasmania": 0,
+        "in Victoria": 2,
+        "in Western Australia": 1,
+        "in New Zealand": 18
+    },
+    "statistiche periodiche di eventi": {
+        "in New South Wales": {
+            "minimo": 0,
+            "massimo": 14,
+            "media": 2.29
+        },
+        "in Queensland": {
+            "minimo": 0,
+            "massimo": 1,
+            "media": 0.14
+        },
+        "in South Australia": {
+            "minimo": 0,
+            "massimo": 0,
+            "media": 0.0
+        },
+        "in Tasmania": {
+            "minimo": 0,
+            "massimo": 0,
+            "media": 0.0
+        },
+        "in Victoria": {
+            "minimo": 0,
+            "massimo": 2,
+            "media": 0.29
+        },
+        "in Western Australia": {
+            "minimo": 0,
+            "massimo": 1,
+            "media": 0.14
+        },
+        "in New Zealand": {
+            "minimo": 0,
+            "massimo": 12,
+            "media": 2.0
+        }
+    },
+    "numero eventi per il genere": {
+        "Pop": 7,
+        "Rugby": 1,
+        "Miscellaneous": 3,
+        "Rock": 4,
+        "Fairs & Festivals": 14,
+        "Miscellaneous Theatre": 2,
+        "Comedy": 2,
+        "Classical": 2,
+        "Community/Civic": 2,
+        "Other": 1
+    },
+    "eventi": [
+        {
+            "nome": "Backstreet Boys",
+            "url": "http://resale.ticketmaster.com.au/Resale/Tickets/2797639",
+            "citta": "New South Wales",
+            "stato": "New South Wales",
+            "paese": "Australia",
+            "data": "2021-05-07",
+            "ora": "19:30:00",
+            "genere": "Pop",
+            "sottoGenere": "Pop Rock"
+        },
+        {
+            "nome": "Backstreet Boys",
+            "url": "http://resale.ticketmaster.com.au/Resale/Tickets/2805222",
+            "citta": "New South Wales",
+            "stato": "New South Wales",
+            "paese": "Australia",
+            "data": "2021-05-08",
+            "ora": "19:30:00",
+            "genere": "Pop",
+            "sottoGenere": "Pop Rock"
+        },
+        {
+            "nome": "Sydney Royal Easter Show - Reserved Seat",
+            "url": "https://www.ticketmaster.com.au/sydney-royal-easter-show-reserved-seat-sydney-olympic-park-new-south-wales-04-01-2021/event/2500599EDBC019C0",
+            "citta": "Sydney Olympic Park",
+            "stato": "New South Wales",
+            "paese": "Australia",
+            "data": "2021-04-01",
+            "ora": "09:00:00",
+            "genere": "Fairs & Festivals",
+            "sottoGenere": "Undefined"
+        },
+```
+ecc...
+```json
+    ]
+}
+```
+
+Ovvero, otteniamo un `JSONObject` contenente un `JSONArray` in cui ciascun elemento rappresenta un evento, con relativa descrizione, associato ad un determinato Stato tra tutti i possibili Stati appartenenti ai Paesi Australia e Nuova Zelanda; inoltre, accanto al risultato del filtraggio, è possibile visualizzare tutte le statistiche relative ad ogni Stato considerato.
+
+In particolare, è possibile osservare che, nella chiamata di tipo `HTTP GET` appena eseguita, vengono specificati tutti i parametri che che si intende ricevere in risposta dall'`API`
+
 ## JUnit Test
 Per facilitare la lettura e la comprensione del discorso intorno al testing dell'applicativo, è utile considerare il seguente Class Diagram:
 ![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/UML/readme%20images%231/uuuuuu.jpg)
@@ -319,142 +497,6 @@ Una volta aperta la pagina `index-1.html`, è possibile accedere alla documentaz
 * la voce `INDEX > All Classes > Exception Summary` che descrive la classe di gestione eccezioni del progetto
 
 Ovviamente, cliccando il nome di una qualsiasi classe nella pagina `index-1.html`, sarà possibile accedere ad informazioni quali metodi, attributi, package di appartenenza, metodo costruttore, autore della classe, ecc...
-
-## GUI: Premesse
-
-<H1>
-La Filter-App 'The Last of Events' prevede due tipi diversi di interazione tra utente ed applicativo;
-In particolare, la prima metodologia di interazione prevede che l'utente inoltri delle richieste al software mediante un file JSON, che costituisce il `Body` della rotta `localhost:8080/eventi`, in cui inserisce i parametri desiderati;
-La seconda metodologia, al contrario, prevede un tipo di interazione utente-sistema mediante una Graphic User Interface(`GUI`);
-
-Affinchè l'esperienza proposta dalla `GUI` sia la migliore possibile è necessario che, su schermi ad alti DPI (Dot Per Inch), si effettui un ridimensionamento dello schermo dal valore predefinito al 100%, poichè, altrimenti, le immagini risulterebbero sgranate;
-SCRIVERE PATH
-</H1>
-
-<H1>
-(tutto il progetto e non solo gui) Il programma è stato pensato, ideato e sviluppato su e per Windows 10 (per questo motivo, è preferibile che l'applicativo venga eseguito su win 10); tuttavia, nonostante la premessa, il programma funziona (per grazia di Javaeh) anche su Linux (mac da provare)
-tuttavia, il programma, su linux, presenta le seguenti limitazioni: 
-1) difetti grafici quali: ad esempio, cursore più grande del consueto, caratteri non leggibili e sostituiti con <?>
-2) l'eseguibile della gui non funziona perchè, essendo generato su win, per motivi di sicurezza su Linux, non viene riconosciuto come eseguibili; la gui deve essere importata in eclipse e lanciata da Eclipse attraverso la classe main
-3) si saprà se dio vorrà...
-4) 
-</H1>
-</br>
-</br>
-</br>
-</br>
-<H1>
-(tutto il progetto e non solo gui)  nella folder resources (contenente i due file scannerizzati stati e generi .csv letti dallo Dalla classe scanner e passati ad i vari metodi) è stato aggiunto un file .txt APIKey che sarà inizialmente vuoto PER TUTTI coloro che eseguono il clone del progetto dall'indirizzo...
-per motivi di sicurezza relativi all'impossibilità di divulgare una key ottenuta mediante registrazione presso il sito ticketmaster, ogni utente che vorrà impiegare l'intero progetto (gui o meno) dovrà registrarsi su tm developers, richiedere la propria key gratuita, ed inserirla nel file APIKey.
-La key inserita in APIKey verrà letta mediante uno scanner nel progetto ed, una volta letta, viene sostituita nella chiamata (simil postman) (ai prof la inviamo noi)
-</H1>
-</br>
-</br>
-</br>
-</br>
-<H1>
-(solo gui) è stato generato l'eseguibile della gui, noto come 'The Last Of Events.jar' (con loghino java), che si trova nel percorso 
-progetto-OOP > GUI > 'The Last Of Events.jar'
-la creazione di questo eseguibile permette di evitare di importare in Eclipse la cartella (progetto) GUI;
-in questo caso, l'applicazione parte semplicemente lanciando l'eseguibile; PERò sarà comunque necessario avviare l'applicazione Spring mediante Java per la parte di BackEnd.
-L'eseguibile funziona solo su windows, su linux ci sono restirizioni, su mac boh.
-</H1>
-</br>
-</br>
-</br>
-</br>
-<H1>
-(solo gui) Potrebbe succedere che, quando si avvia la GUI, nella prima finestra (Home) potrebbero sparire i campi selezionabili o il logo; tuttavia, se si passa con il mouse sui pulsanti invisibili, questi riappaiono.
-Per risolvere, o si spegnene e riaccende oppure si passa alla schermata successiva tramite il pulsante 'entra' e poi si torna indietro ed è tutto a posto (priblema in fase di sviluppo della gui, ora pare che funziona)
-</H1>
-</br>
-</br>
-</br>
-</br>
-<H1>
-(solo gui) Per visualizzare correttamente la gui è necessario installare il font 'Press Gothic.otf', accessibile al percorso
-progetto-OOP > GUI > resources > 'Press Gothic.otf'
-l'installazione è corretta sia su win che su linux, da vedere su mac.
-</H1>
-</br>
-</br>
-</br>
-</br>
-<H1>
-(solo gui) ROTTE
-3 rotte get
-1) copia di quella post ma in get con relativi accorgimenti (creata per essere passata alla gui)
-2) rotta GET /stati :non prende parametri ma ritorna un vettore di stringhe contenente i valori presi dalla lettura, in scanner, del file Stati.csv
-3) rotta GET /generi :non prende parametri ma ritorna un vettore di stringhe contenente i valori presi dalla lettura, in scanner, del file Generi.csv
-queste due rotte sono utili per passare i valori nella GUI
-</H1>
-</br>
-</br>
-</br>
-</br>
-<H1>
-(solo gui) 
-1) La prima cosa che l'utente vede quando esegue l'eseguibile è la schermata Home
-2) DUE PULSANTI PRINCIPALI: il pulsante ENTRA che permette di passare alla seconda schermata, nota come Filtraggio, ed il pulsante Exit che termina l'esecuzione del programma
-(ovviamente, se si preme exit il prigramma spring in backend continua a runnare)
-IMMAGINE 1 SCHERMATA HOME
-3) Nella seconda pagina, che è la schermata di filtraggio, è possibile richiedere al programma di trovare gli eventi filtrati per: Stati e Generi, ed ottenere statistiche relative ad un periodo (opzione mensile non implementata); in questa schermata è possibile utilizzare il pulsante 'CERCA' che passa, alla schermata responso, i risultati filtrati mediante i paramentri inseriti
-4) il pulsante 'Svuota' resetta tutte le scelte compiute 
-5) il pulsante exit termina l'esecuzione del programma
-6) il pulsante 'Home' torna alla prima schermata dell'app
-IMMAGINE 2: SCHERMATA FILTRAGGIO IN GENERALE
-
-7)in Stati: di default, la sezione 'Stati' presenta una comboBox in cui è possibile scegliere/inserire il nome dello Stato di Australia o New Zealand su cui si vuole fare la ricerca; 
-8)è possibile scegliere anche più di uno Stato attraverso il pulsante + che aggiunge, ogni volta che lo si clicca (fino ad un massimo di 7), una comboBox tesa ad ospitare un'altro stato da filtrare.
-9)è possibile scegliere tutti gli stati in un unico colpo scegliendo l'opzione 'tutti gli stati'
-10) se si prova a fare la ricerca lasciando la combobox 'Stato' vuota, compare un popup di errore che ti impone di inserire tutti i campi(ovvero, di inserire almeno un valore in ogni combobox relativa ad ogni sezione: le sezioni sono stati, generi e periodo)
-IMMAGINE 3: PIù COMBOBOX STATI
-IMMAGINE 4: WARNING
-
-7)in gENERI: di default, la sezione 'gENERI' presenta una comboBox in cui è possibile scegliere/inserire il nome genere su cui si vuole fare la ricerca; 
-8)è possibile scegliere anche più di uno genere attraverso il pulsante + che aggiunge, ogni volta che lo si clicca (fino ad un massimo di 9), una comboBox tesa ad ospitare un'altro genere da filtrare.
-9)è possibile scegliere tutti i generi in un unico colpo scegliendo l'opzione 'tutti i generi'
-10) se si prova a fare la ricerca lasciando la combobox 'Genere' vuota, compare un popup di errore che ti impone di inserire tutti i campi(ovvero, di inserire almeno un valore in ogni combobox relativa ad ogni sezione: le sezioni sono stati, generi e periodo)
-IMMAGINE 5: PIù COMBOBOX Generi
-IMMAGINE 4: WARNING
-
-11) in Periodo: la sezione 'Periodo' consente di scegliere (obbligatoriamente) una data iniziale ed una data finale, nel formato yyyy-mm-dd, attraverso delle combobox
-12) ABBIamo il cazzo immenso perchè l'anno si aggiorna a seconda dell'anno corrente.
-13) sono stati effetuati controlli sui giorni in relazione ai mesi (nel senso che, se si sceglie febbraio, è possibile andare dal giorno 1 al giorno 28; il software, poichè auto considera l'anno corrente, riconosce se l'anno è bisestile, ovvero riconosce se Febbraio ha 29 giorni piuttosto che 28)
-14) sulle date è stato effettuato un controllo che visualizza un Warning nel caso in cui data iniziale >= data finale
-IMMAGINE 6: DATE
-IMMAGINE 7: WARNING DATE
-
-13) Se non ci sono eventi per i filtri specificati (ovvero Stati e generi), viene visualizzato un popup con scritto 'Errore, non ci sono eventi disponibilo'
-IMMAGINE 8: NON CE N'è EVENTI
-
-14) uLTIMA SCHERMATA: permtte di visualizzare il responso relativo ai filtri inseriti nella schermata orecedente e presenta il pulsante 'Nuova Ricerca' che permette di tornare alla schermata filtraggio per effettuare una nuova ricerca
-IMMAGINE 9: RESPONSO
-</H1>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## Software Utilizzati
 La lista di software & tools impiegati per realizzare la Filter-App è la seguente:
