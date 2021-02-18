@@ -7,7 +7,7 @@
 - [Installazione](#installazione)
 - [Struttura API Ticketmaster](#struttura-api-ticketmaster)
 - [Considerazioni Generali](#considerazioni-generali)
-- [Considerazioni Necessarie Relative All'Impiego Dell'App](#considerazioni-necessarie-relative-all-impiego-dell-app)
+- [Considerazioni Necessarie](#considerazioni-necessarie)
 - [UML](#uml)
   - [Use Case Diagram](#use-case-diagram)
   - [Class Diagram](#class-diagram)
