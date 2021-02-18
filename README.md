@@ -17,7 +17,7 @@
   - [Body della rotta e risposta JSON](#body-della-rotta-e-risposta-json)
   - [Chiavi e Valori](#chiavi-e-valori)
 - [Rotte GUI](#rotte-gui)
-  - [Rotta /stati e risposta JSON](#rotta-/stati-e-risposta-json)
+  - [Rotta /stati e risposta JSON](#rotta-stati-e-risposta-json)
   - [Rotta /generi e risposta JSON](#rotta-/generi-e-risposta-json)
   - [Rotta per selezionare tutti gli Stati e risposta JSON](#rotta-per-selezionare-tutti-gli-stati-e-risposta-json)
 -[Configurazione GUI](#configurazione-gui)
