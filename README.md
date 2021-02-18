@@ -11,8 +11,7 @@
 - [UML](#uml)
   - [Use Case Diagram](#use-case-diagram)
   - [Class Diagram](#class-diagram)
-  - [Sequence Diagram](#sequence-diagram)
-  - [Sequence Diagram Rotta “/eventi”](#sequence-diagram-rotta-eventi)
+  - [Sequence Diagrams](#sequence-diagrams)
 - [Rotte](#rotte)
   - [Filtri e Stats Richiesti](#filtri-e-stats-richiesti)
   - [Body della rotta e risposta JSON](#body-della-rotta-e-risposta-json)
@@ -21,6 +20,7 @@
   - [Rotta /stati e risposta JSON](#rotta-/stati-e-risposta-json)
   - [Rotta /generi e risposta JSON](#rotta-/generi-e-risposta-json)
   - [Rotta per selezionare tutti gli Stati e risposta JSON](#rotta-per-selezionare-tutti-gli-stati-e-risposta-json)
+-[Configurazione GUI](#configurazione-gui)
 - [JUnit Test](#junit-test)
 - [Documentazione JavaDoc](#documentazione-javadoc)
 - [GUI: Premesse](#gui-premesse)
@@ -127,14 +127,20 @@ Mese | statistica che mostra il numero minimo, massimo e la media degli eventi, 
 Periodo personalizzato | statistica che mostra il numero minimo, massimo e la media degli eventi, che soddisfano i criteri di ricerca precedenti, in ciascuna delle ripetizioni del periodo personalizzato; l'ultima ripetizione del periodo scelto è quella che non supera il 364-esimo giorno dell'anno della data iniziale inserita dall'utente
 
 ### Class Diagram
---------------------------------------------------------------------------inserisci il diagramma uml delle classi in HD
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/UML/UML_finali/ClassDiagram/Main.jpg)
 
 percorso e packages dell'applicativo:
 
 ![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/UML/ProjectClassDiagram/ProjectClassDiagram_jpeg/Package%20jpg/Package%20Structure0001.jpg)
 
-### Sequence Diagram
---------------------------------------------------------------------------inserisci il diagramma uml delle sequenze
+### Sequence Diagrams
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/UML/UML_finali/Usare%20questi%20per%20sequanza%20readme/Chiamata.png)
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/UML/UML_finali/Usare%20questi%20per%20sequanza%20readme/controlloGeneri.png)
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/UML/UML_finali/Usare%20questi%20per%20sequanza%20readme/filtroGeneri%20.png)
 
 ### Sequence Diagram Rotta “/eventi”
 --------------------------------------------------------------------------inserisci il diagramma uml delle sequenze
@@ -430,6 +436,82 @@ ecc...
 Ovvero, otteniamo un `JSONObject` contenente un `JSONArray` in cui ciascun elemento rappresenta un evento, con relativa descrizione, associato ad un determinato Stato tra tutti i possibili Stati appartenenti ai Paesi Australia e Nuova Zelanda; inoltre, accanto al risultato del filtraggio, è possibile visualizzare tutte le statistiche relative ad ogni Stato considerato.
 
 In particolare, è possibile osservare che, nella chiamata di tipo `HTTP GET` appena eseguita, vengono specificati tutti i parametri che che si intende ricevere in risposta dall'`API`
+
+## Configurazione GUI
+La graphic User Interface dell'applicativo 'The Last of Events' presenta tre pagine principali, rispettivamente note come **Home**, **Filtering** e **Response**; in particolare, si ha che:
+
+**Home**
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/GUI/images/GUI%20README%20images/GUI%20-%20immagine%201.png)
+
+La schermata Home è la prima pagina ad essere visualizzata dall'utente quando avvia la Filter-App; in particolare, essa presenta due `JButton`, rispettivamente noti come 'Entra' ed 'Exit', che propongono le seguenti funzionalità:
+* Entra: permette di accedere alla seconda schermata, nota come Filtering, in modo da poter selezionare i parametri del filtro che verrà imposto su Stati, generi e periodo personalizzato.
+* Exit: termina l'esecuzione del programma; ovviamente, se si clicca 'Exit', si imporrà la chiusura della sola parte `Front-End` dell'applicativo mentre, al contrario, il codice `Spring`  in `Back-End` su `Eclipse` continuerà la propria esecuzione fin quando non la si terminerà manualmente.
+
+**Filtering**
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/GUI/images/GUI%20README%20images/GUI%20-%20immagine%202.png)
+
+Nella seconda pagina, che è la schermata di Filtering, è possibile chiedere al programma sia di cercare e restituire gli eventi, che soddisfano i parametri inseriti nei  filtri relativi a Stati e generi, e sia di calcolare statistiche relative ad un periodo di tempo; è importante notare che, nel caso della `GUI`, l'opzione per la produzione di statistiche mensili non è implementata;
+
+Inoltre, in tale schermata, è possibile utilizzare i seguenti `JButton`:
+* Cerca: fornisce, alla schermata 'Response', i risultati filtrati mediante i paramentri inseriti
+* Svuota: permette resettare tutte le scelte compiute, ovvero tutti i parametri inseriti nei campi disponibili
+* Exit: pulsante che consente di terminare l'applicazione in esecuzione; è lo stesso `JButton` implementato nella schermata 'Home'
+* Home: permette di tornare alla prima schermata dell'App, ovvero reindirizza l'user alla schermata 'Home'
+
+**ComboBox**
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/GUI/images/GUI%20README%20images/GUI%20-%20immagine%203.0.png)
+
+ComboBox Stati: di default, il campo 'STATI' presenta una ComboBox in cui è possibile scegliere o inserire, a seconda del fatto che si clicchi con il mouse o che si scriva da tastiera, il nome dello Stato di Australia o Nuova Zelanda su cui si vuole effettuare la ricerca; in particolare, è possibile selezionare anche più di uno Stato attraverso il pulsante **+** che aggiunge, ogni volta che lo si clicca, fino ad un massimo di 7 volte, una ComboBox tesa ad ospitare un'altro stato da filtrare.
+
+Inoltre, se si vogliono calcolare statistiche globali, è possibile scegliere, contemporaneamente, tutti gli Stati mediante l'opzione 'tutti gli Stati'.
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/GUI/images/GUI%20README%20images/GUI%20-%20immagine%203.1.png)
+
+Infine, se si esegue una ricerca lasciando la ComboBox 'STATI' vuota, il risultato sarà un Popup di errore che imporrà all'utente di inserire almeno un parametro per ogni campo fornito dalla schermata 'Filtering'.
+___
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/GUI/images/GUI%20README%20images/GUI%20-%20immagine%204.0.png)
+
+ComboBox Generi: di default, il campo 'Generi' presenta una ComboBox in cui è possibile scegliere o inserire, a seconda del fatto che si clicchi con il mouse o che si scriva da tastiera, il nome del genere su cui si vuole effettuare la ricerca; in particolare, è possibile selezionare anche più di un genere attraverso il pulsante **+** che aggiunge, ogni volta che lo si clicca, fino ad un massimo di 9 volte, una ComboBox tesa ad ospitare un'altro genere da filtrare.
+
+Inoltre, se si vogliono calcolare statistiche globali, è possibile scegliere, contemporaneamente, tutti i generi  mediante l'opzione 'tutti i generi'.
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/GUI/images/GUI%20README%20images/GUI%20-%20immagine%204.1.png)
+
+Infine, se si esegue una ricerca lasciando la ComboBox 'GENERI' vuota, il risultato sarà un Popup di errore che imporrà all'utente di inserire almeno un parametro per ogni campo fornito dalla schermata 'Filtering'.
+___
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/GUI/images/GUI%20README%20images/GUI%20-%20immagine%205.png)
+
+ComboBox Periodo: attraverso due ComboBox, una per la data iniziale ed una per la data finale, entrambe nel formato yyyy-mm-dd, la sezione 'PERIODO' consente di determinare, obbligatoriamente, un periodo personalizzato per il calcolo delle statistiche inerenti ai risultati di ricerca ottenuti mediante i filtri; in particolare, una delle Feature relative alla voce 'PERIODO' è una calendar-like function che permette di:
+* aggiornare automaticamente l'anno selezionabile in base all'anno corrente
+* effettuare controlli sui giorni in relazione ai mesi; infatti, se si sceglie Febbraio, è possibile andare dal giorno 1 al giorno 28; inoltre, poichè il software considera automaticamente l'anno corrente, esso riconosce se l'anno è bisestile aggiornando, dunque, la data massima assumibile da Febbraio a 29.
+* effettuare controlli sulle date e genera un Warning nel caso in cui la data iniziale sia maggiore o uguale della data finale
+
+
+di default, il campo 'Generi' presenta una ComboBox in cui è possibile scegliere o inserire, a seconda del fatto che si clicchi con il mouse o che si scriva da tastiera, il nome del genere su cui si vuole effettuare la ricerca; in particolare, è possibile selezionare anche più di un genere attraverso il pulsante **+** che aggiunge, ogni volta che lo si clicca, fino ad un massimo di 9 volte, una ComboBox tesa ad ospitare un'altro genere da filtrare.
+
+Inoltre, se si vogliono calcolare statistiche globali, è possibile scegliere, contemporaneamente, tutti i generi  mediante l'opzione 'tutti i generi'.
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/GUI/images/GUI%20README%20images/GUI%20-%20immagine%206.png)
+
+Infine, se si esegue una ricerca lasciando la ComboBox 'GENERI' vuota, il risultato sarà un Popup di errore che imporrà all'utente di inserire almeno un parametro per ogni campo fornito dalla schermata 'Filtering'.
+
+**Eccezioni**
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/GUI/images/GUI%20README%20images/GUI%20-%20immagine%207.png)
+
+Se non ci sono eventi disponibili per i filtri Stati e Generi, viene visualizzato un popup che genera il messaggio: 'Errore, non ci sono eventi disponibili'
+
+**Response**
+
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/GUI/images/GUI%20README%20images/GUI%20-%20immagine%208.png)
+
+L'ultima schermata, nota come 'Response', che permette di visualizzare il risultato prodotto dai filtri inseriti nella schermata precedente e presenta il pulsante 'Nuova Ricerca' che permette di tornare alla schermata 'Filtering' per effettuare una nuova ricerca
+
 
 ## JUnit Test
 Per facilitare la lettura e la comprensione del discorso intorno al testing dell'applicativo, è utile considerare il seguente Class Diagram:
