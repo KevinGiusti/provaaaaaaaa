@@ -225,6 +225,9 @@ Key | Bad-value | Eccezione | Risposta dell'applicazione
 `"periodo"` | `:["Shrek","2021-03-01"]` | EventiException() | `"Errore": "Il formato consentito nel vettore 'periodo' è il seguente: 'yyyy-mm-dd'"`
 
 ## JUnit Test
+Per facilitare la lettura e la comprensione del discorso intorno al testing dell'applicativo, è utile considerare il seguente Class Diagram:
+![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/UML/readme%20images%231/uuuuuu.jpg)
+
 Per verificare la correttezza dei risultati prodotti da alcuni metodi del software 'The Last of Events', sono stati implementati i seguenti **unit test** mediante l'utilizzo del framework JUnit:
 ___
 ### Test Metodi Della Classe MinMaxAverageFilter.java
@@ -272,3 +275,5 @@ in particolare:
 
 * **sortSelectedEventsTest():** Metodo per testing del metodo sortSelectedEvents che controlla se il sorting di un array di interi è svolto nel modo corretto
 in sintesi, datesStatisticsTest() invoca il metodo assertEquals(), i cui parametri sono il risultato del metodo sortSelectedEvents ed un array ordinato nel modo corretto
+
+## Documentazione
