@@ -293,3 +293,29 @@ Ovviamente, cliccando il nome di una qualsiasi classe nella pagina `index-1.html
 
 ## Software Utilizzati
 La lista di software & tools impiegati per realizzare la Filter-App è la seguente:
+* L'IDE [Eclipse](https://www.eclipse.org/downloads/), pacchetto [JDK](https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-12/R/eclipse-java-2020-12-R-win32-x86_64.zip), per la scrittura del codice dell'intero applicativo
+* Il tool [Postman](https://www.postman.com/downloads/), strumento per il testing delle API, impiegato per gestire le chiamate `GET` e `POST` delle rotte 
+* Il software [StarUML](https://staruml.io/), per la produzione dei Class Diagram e degli Use Case Diagram
+* La piattaforma [GitHub](https://github.com/), per il versioning del codice, dell'UML e dell'interfaccia 
+* La shell [Git Bash](https://git-scm.com/downloads), per eseguire il versioning del codice mediante terminale direttamente dalla cartella del progetto
+* Il framework [JUnit 5](https://junit.org/junit5/), per lo Unit Testing dei metodi dell'applicativo
+* L'applicativo [Javadoc](https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javadoc.html), incluso nel pacchetto [JDK](https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-12/R/eclipse-java-2020-12-R-win32-x86_64.zip), utilizzato per la generazione automatica della documentazione del codice sorgente scritto in Java
+* Il software [Excel](https://chrome.google.com/webstore/detail/excel-online/iljnkagajgfdmfnnidjijobijlfjfgnb?hl=it), per la scrittura dei file contenenti gli Stati ed i generi  che verranno letti dall'applicazione mediante Scanner in input
+* L'editor [Adobe Photoshop](https://www.adobe.com/it/products/photoshop.html?mv=search&sdid=F89JZPN9&ef_id=CjwKCAiAmrOBBhA0EiwArn3mfP_7kq1glefG8WG81535fX8ZbsEgZssDK_qhCZf7tlCIY75OqgbsthoCLx0QAvD_BwE:G:s&s_kwcid=AL!3085!3!394417421007!e!!g!!photoshop%20download!1457478710!56999190912&gclid=CjwKCAiAmrOBBhA0EiwArn3mfP_7kq1glefG8WG81535fX8ZbsEgZssDK_qhCZf7tlCIY75OqgbsthoCLx0QAvD_BwE), per la produzione della grafica della GUI
+* Il software [TeamViewer](https://www.teamviewer.com/it/?utm_source=google&utm_medium=cpc&utm_campaign=it|b|pr|20|jun|broad-brand-only-sn|free|t0|0&utm_content=broad_brand_only&utm_term=%2Bteamviewer&gclid=CjwKCAiAmrOBBhA0EiwArn3mfAkI6nkkj6gMzEJ_uzxCNLuNy9bJ_nA59-ERNvfdHMCxNi5W5pNjphoCUigQAvD_BwE), per la produzione e discussione del codice Java in team ed in contemporanea
+* La piattaforma Voip [Discord](https://discord.com/download), per confronti di idee, comunicazioni e scambio materiale propedeutico allo sviluppo del codice (materiale che non è stato opportuno pubblicare su GitHub poichè di natura esclusivamente teorica)
+* La piattaforma [Stack Overflow](https://stackoverflow.com/), per la risoluzione di alcune problematiche legate al coding dell'app o all'impiego di alcuni metodi o classi
+* Il tool [Spring Inizializr](https://start.spring.io/), per la generazione del progetto 
+* Il toolkit [JSON.simple](https://www.tutorialspoint.com/json_simple/json_simple_quick_guide.htm), per la decodifica, lettura e parsing dei file [JSON](https://www.json.org/json-it.html)
+* Il framework [Spring](https://spring.io/), per l'esecuzione e sviluppo dell'applicazione Java
+* Il progetto [Spring Boot](https://spring.io/projects/spring-boot), che consente di avviare l'applicazione attraverso un metodo main che, a sua volta, lancia il web server integrato
+* L'IDE [Spring Tool Suite 4](https://spring.io/tools), per lo sviluppo di applicazioni Spring
+* Il tool [Spring Web](https://spring.io/guides/gs/serving-web-content/), affinchè l'applicazione possa accettare richieste `HTTP` all'indirizzo `localhost:8080`
+* Il tool [Apache Maven](https://maven.apache.org/), per la definizione della struttura del progetto mediante il file `pom.xml` 
+* Il web server locale [Apache Tomat](https://spring.io/blog/2014/03/07/deploying-spring-boot-applications), per la gestione delle richieste `HTTP`
+
+## Autori
+La Filter-App 'The Last of Events' è stata sviluppata da:
+* [Rocco Anzivino](https://github.com/RoccoAnzivino)
+* [Kevin Giusti](https://github.com/KevinGiusti)
+* [Kejvin Skiti](https://github.com/Kejvin)
