@@ -6,9 +6,10 @@
 - [Introduzione](#introduzione)
 - [Installazione](#installazione)
 - [Struttura API Ticketmaster](#struttura-api-ticketmaster)
-- [Configurazione](#configurazione)
+- [Considerazioni Generali](#considerazioni-generali)
+- [Considerazioni Necessarie Relative All'Impiego Dell'App](#considerazioni-necessarie-relative-all'impiego-dell'app)
 - [UML](#uml)
-  - [Use Case Diagram](#use-Case-diagram)
+  - [Use Case Diagram](#use-case-diagram)
   - [Class Diagram](#class-diagram)
   - [Sequence Diagram](#sequence-diagram)
   - [Sequence Diagram Rotta “/eventi”](#sequence-diagram-rotta-eventi)
@@ -18,6 +19,7 @@
   - [Chiavi e Valori](#chiavi-e-valori)
 - [JUnit Test](#junit-test)
 - [Documentazione JavaDoc](#documentazione-javadoc)
+- [GUI: Premesse](#gui-premesse)
 - [Software Utilizzati](#software-utilizzati)
 - [Autori](#autori)
  
@@ -62,8 +64,35 @@ che può essere sintetizzata mediante il seguente grafico:
 
 ![alt text](https://raw.githubusercontent.com/KevinGiusti/progetto-OOP/main/UML/readme%20images%231/0.0.5-%23mappa%20uml%20classi.jpg)
 
-## Configurazione
-Non lo so, robe che mi deve dire Rocco circa la key che altrimenti l'Univpm vive di stracci e fagioli
+## Considerazioni Generali
+
+In primo luogo, è necessario osservare che la Filter-App 'The Last of Events' propone due tipi diversi di interazione tra utente ed applicativo;
+Infatti, il servizio proposto dal software, in esecuzione sul server locale alla porta `8080`, è accessibile sia mediante un tool di testing delle Application Programming Interface, comunemente note come `API`, come, ad esempio, Postman, e sia mediante una Graphic User Interface, ovvero tramite `GUI`, che rende User Friendly la componente `Front-End` dell'applicazione e che gestisce, tramite Spring ed Eclipse, la parte di `Back-End`.
+
+Inoltre, è altresì importante considerare che, poichè l'intero programma è stato pensato, scritto, ideato e sviluppato su `Windows 10` per `Windows 10`, è preferibile che l'applicativo stesso venga eseguito su tale Sistema Operativo; tuttavia, nonostante questa propensione, sarà comunque possibile accedere all'applicazione mediante `SO` quali `Linux` e `Mac OS` semplicemente avviando la `GUI` direttamente da `Eclipse` piuttosto che da file eseguibile;
+
+In particolare, la predilezione del Sistema Operativo `Windows 10` rispetto agli altri possibili `SO` è dovuta non solo alla possibilità di avviare direttamente il file eseguibile `The Last Of Events.jar` della parte `Front-End` dell'intero Software, ma è dovuta anche ad un miglior rendimento grafico della `GUI` poichè, su piattaforme quali `Linux` e `Mac OS`, alcuni caratteri speciali non sono leggibili a causa delle `ASCII-table` ed i contorni degli elementi dell'interfaccia User-Friendly sono meno definiti rispetto alla finestra generata su `Windows 10`.
+
+Dal punto di vista tecnico, l'impossibilità di eseguire direttamente il file di lancio della parte `Front-End` del software 'The Last of Events' su piattaforme quali `Linux` e `Mac OS` è dovuta a motivi di sicurezza, relativi all'origine dell'App, imposti dai suddetti Sistemi Operativi; tuttavia, tale impedimento è facilmente superabile dal momento che, per utilizzare la `GUI`, sarà sufficiente avviare il programma dalla classe `main` sita internamente al codice del programma.
+
+Per concludere, nel caso si dovesse preferire l'esecuzione di 'The Last of Events' mediante `GUI` su piattaforma `Windows 10` , affinchè le finestre dell'App vengano visualizzate nel modo corretto  su schermi con elevati `DPI` (Dot Per Inches), è necessario ridimensionare lo schermo al valore `100%` attraverso i seguenti passaggi:
+`Impostazioni > Schermo > Ridimensionamento e Layout > Modifica la dimensione di testo, app e altri elementi`, ed è altresì consigliata l'installazione del`font` `Press Gothic.otf`, reperibile accedendo al percorso `progetto-OOP > GUI > resources > 'Press Gothic.otf'`
+
+**Nota:** l'installazione del `font` viene eseguita, senza impedimenti di alcun genere, su ogni `SO`.
+
+
+## Considerazioni Necessarie Relative All'Impiego Dell'App
+
+**IMPORTANTE:** Per motivi legati all'impossibilità, da parte degli sviluppatori, di divulgare una chiave ottenuta mediante previa registrazione, prima di poter impiegare l'Applicativo 'The Last of Events', indipendentemente dal fatto che si favorisca l'approccio tramite `Postman` o tramite `GUI`, è necessario accedere alla cartella `resources`, reperibile attraverso il percorso `progetto-OOP > ticketmaster > resources`, e modificare il file `APIKey.txt`, inizialmente vuoto per ogni utente che esegue l'operazione di `clone` del progetto, inserendo la propria `key` gratuita ottenuta mediante registrazione presso il sito [TM Developers](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/);
+
+Una volta completata tale operazione, è sufficiente avviare l'`IDE Eclipse` ed eseguire il comando di `Refresh` selezionando la cartella principale del progetto, nota come `ticketmaster`, attraverso il tasto destro del mouse o touchpad.
+In questo modo, una volta avviato il software, la `key` inserita dall'utente verrà letta mediante uno scanner e, se risulterà accettabile, l'applicazione sarà completamente fruibile.
+
+**Osservazioni Finali**
+Nel caso si utilizzi il Sistema Operativo `Windows 10`, il file eseguibile della `GUI`, noto come `The Last Of Events.jar`, reperibile nel percorso `progetto-OOP > GUI`, permette di evitare di importare in `Eclipse` la cartella `GUI`; infatti, selezionando tale file, è possibile avviare la parte `Front-End` dell'App semplicemente lanciando l'eseguibile che, tuttavia, per funzionare correttamente, dovrà sempre essere interconnesso alla parte `Back-End` del software rappresentata mediante applicazione `Spring` in esecuzione nell'`IDE Eclipse`. 
+
+Infine, quando si impiega la Graphic User Interface per l'esecuzione di 'The Last of Events', è possibile che, nella prima finestra dell'applicativo, ovvero nella schermata Home, non compaiano i campi selezionabili o il logo dell'App; per risolvere questo tipo di inconveniente, è sufficiente scorrere, con il cursore del mouse, lungo l'intera pagina in modo che tutti i pulsanti, venendo selezionati, possano attivarsi nuovamente;
+Alternativamente, è possibile riavviare il programma oppure selezionare la schermata successiva, tramite il pulsante `entra`, per poi tornare nuovamente nella `Home`.
 
 ## UML
 ### Use Case Diagram
@@ -241,7 +270,7 @@ in particolare:
 * **testDateConverter():** Metodo per testing del metodo dateConverter(), relativo al controllo della stringa inserita nel convertitore, che, fornita una stringa rappresentante una data, ed un oggetto della classe LocalDate che rappresenta la medesima data, controlla se il risultato della conversione sia pari all'oggetto LocalDate;
 in sintesi, testDateConverter() invoca il metodo assertEquals(), i cui parametri sono il risultato della conversione tramite il metodo dateConverter e l'oggetto di tipo LocalDate ante introdotto.
 * **testDateConverterException():** Metodo per testing del metodo dateConverter(), relativo al controllo della stringa inserita nel convertitore, che, fornita una stringa rappresentante una data errata, generi un'eccezione di tipo `DateTimeParseException`;
-in sintesi, testDateConverter() invoca il metodo assertThrows(), i cui parametri sono il risultato della conversione tramite il metodo dateConverter e la classe `DateTimeParseException.class` della libreria `java.timeformat`
+in sintesi, testDateConverter() invoca il metodo assertThrows(), i cui parametri sono il risultato della conversione tramite il metodo dateConverter e la classe `DateTimeParseException.class` della libreria `java.time.format`
 
 **2) MaxRipetizioneDelPeriodoTest**
 La JUnit Test Case 'MaxRipetizioneDelPeriodoTest' contiene un unico test method, rispettivamente noto come 'maxRipetizioneDelPeriodoTest', che verifica il corretto funzionamento del metodo maxRipetizioneDelPeriodo() che, a sua volta, è dedito al calcolo del numero di volte in cui il periodo personalizzato inserito dall'utente può essere ripetuto nell'arco di un anno;
@@ -291,6 +320,142 @@ Una volta aperta la pagina `index-1.html`, è possibile accedere alla documentaz
 
 Ovviamente, cliccando il nome di una qualsiasi classe nella pagina `index-1.html`, sarà possibile accedere ad informazioni quali metodi, attributi, package di appartenenza, metodo costruttore, autore della classe, ecc...
 
+## GUI: Premesse
+
+<H1>
+La Filter-App 'The Last of Events' prevede due tipi diversi di interazione tra utente ed applicativo;
+In particolare, la prima metodologia di interazione prevede che l'utente inoltri delle richieste al software mediante un file JSON, che costituisce il `Body` della rotta `localhost:8080/eventi`, in cui inserisce i parametri desiderati;
+La seconda metodologia, al contrario, prevede un tipo di interazione utente-sistema mediante una Graphic User Interface(`GUI`);
+
+Affinchè l'esperienza proposta dalla `GUI` sia la migliore possibile è necessario che, su schermi ad alti DPI (Dot Per Inch), si effettui un ridimensionamento dello schermo dal valore predefinito al 100%, poichè, altrimenti, le immagini risulterebbero sgranate;
+SCRIVERE PATH
+</H1>
+
+<H1>
+(tutto il progetto e non solo gui) Il programma è stato pensato, ideato e sviluppato su e per Windows 10 (per questo motivo, è preferibile che l'applicativo venga eseguito su win 10); tuttavia, nonostante la premessa, il programma funziona (per grazia di Javaeh) anche su Linux (mac da provare)
+tuttavia, il programma, su linux, presenta le seguenti limitazioni: 
+1) difetti grafici quali: ad esempio, cursore più grande del consueto, caratteri non leggibili e sostituiti con <?>
+2) l'eseguibile della gui non funziona perchè, essendo generato su win, per motivi di sicurezza su Linux, non viene riconosciuto come eseguibili; la gui deve essere importata in eclipse e lanciata da Eclipse attraverso la classe main
+3) si saprà se dio vorrà...
+4) 
+</H1>
+</br>
+</br>
+</br>
+</br>
+<H1>
+(tutto il progetto e non solo gui)  nella folder resources (contenente i due file scannerizzati stati e generi .csv letti dallo Dalla classe scanner e passati ad i vari metodi) è stato aggiunto un file .txt APIKey che sarà inizialmente vuoto PER TUTTI coloro che eseguono il clone del progetto dall'indirizzo...
+per motivi di sicurezza relativi all'impossibilità di divulgare una key ottenuta mediante registrazione presso il sito ticketmaster, ogni utente che vorrà impiegare l'intero progetto (gui o meno) dovrà registrarsi su tm developers, richiedere la propria key gratuita, ed inserirla nel file APIKey.
+La key inserita in APIKey verrà letta mediante uno scanner nel progetto ed, una volta letta, viene sostituita nella chiamata (simil postman) (ai prof la inviamo noi)
+</H1>
+</br>
+</br>
+</br>
+</br>
+<H1>
+(solo gui) è stato generato l'eseguibile della gui, noto come 'The Last Of Events.jar' (con loghino java), che si trova nel percorso 
+progetto-OOP > GUI > 'The Last Of Events.jar'
+la creazione di questo eseguibile permette di evitare di importare in Eclipse la cartella (progetto) GUI;
+in questo caso, l'applicazione parte semplicemente lanciando l'eseguibile; PERò sarà comunque necessario avviare l'applicazione Spring mediante Java per la parte di BackEnd.
+L'eseguibile funziona solo su windows, su linux ci sono restirizioni, su mac boh.
+</H1>
+</br>
+</br>
+</br>
+</br>
+<H1>
+(solo gui) Potrebbe succedere che, quando si avvia la GUI, nella prima finestra (Home) potrebbero sparire i campi selezionabili o il logo; tuttavia, se si passa con il mouse sui pulsanti invisibili, questi riappaiono.
+Per risolvere, o si spegnene e riaccende oppure si passa alla schermata successiva tramite il pulsante 'entra' e poi si torna indietro ed è tutto a posto (priblema in fase di sviluppo della gui, ora pare che funziona)
+</H1>
+</br>
+</br>
+</br>
+</br>
+<H1>
+(solo gui) Per visualizzare correttamente la gui è necessario installare il font 'Press Gothic.otf', accessibile al percorso
+progetto-OOP > GUI > resources > 'Press Gothic.otf'
+l'installazione è corretta sia su win che su linux, da vedere su mac.
+</H1>
+</br>
+</br>
+</br>
+</br>
+<H1>
+(solo gui) ROTTE
+3 rotte get
+1) copia di quella post ma in get con relativi accorgimenti (creata per essere passata alla gui)
+2) rotta GET /stati :non prende parametri ma ritorna un vettore di stringhe contenente i valori presi dalla lettura, in scanner, del file Stati.csv
+3) rotta GET /generi :non prende parametri ma ritorna un vettore di stringhe contenente i valori presi dalla lettura, in scanner, del file Generi.csv
+queste due rotte sono utili per passare i valori nella GUI
+</H1>
+</br>
+</br>
+</br>
+</br>
+<H1>
+(solo gui) 
+1) La prima cosa che l'utente vede quando esegue l'eseguibile è la schermata Home
+2) DUE PULSANTI PRINCIPALI: il pulsante ENTRA che permette di passare alla seconda schermata, nota come Filtraggio, ed il pulsante Exit che termina l'esecuzione del programma
+(ovviamente, se si preme exit il prigramma spring in backend continua a runnare)
+IMMAGINE 1 SCHERMATA HOME
+3) Nella seconda pagina, che è la schermata di filtraggio, è possibile richiedere al programma di trovare gli eventi filtrati per: Stati e Generi, ed ottenere statistiche relative ad un periodo (opzione mensile non implementata); in questa schermata è possibile utilizzare il pulsante 'CERCA' che passa, alla schermata responso, i risultati filtrati mediante i paramentri inseriti
+4) il pulsante 'Svuota' resetta tutte le scelte compiute 
+5) il pulsante exit termina l'esecuzione del programma
+6) il pulsante 'Home' torna alla prima schermata dell'app
+IMMAGINE 2: SCHERMATA FILTRAGGIO IN GENERALE
+
+7)in Stati: di default, la sezione 'Stati' presenta una comboBox in cui è possibile scegliere/inserire il nome dello Stato di Australia o New Zealand su cui si vuole fare la ricerca; 
+8)è possibile scegliere anche più di uno Stato attraverso il pulsante + che aggiunge, ogni volta che lo si clicca (fino ad un massimo di 7), una comboBox tesa ad ospitare un'altro stato da filtrare.
+9)è possibile scegliere tutti gli stati in un unico colpo scegliendo l'opzione 'tutti gli stati'
+10) se si prova a fare la ricerca lasciando la combobox 'Stato' vuota, compare un popup di errore che ti impone di inserire tutti i campi(ovvero, di inserire almeno un valore in ogni combobox relativa ad ogni sezione: le sezioni sono stati, generi e periodo)
+IMMAGINE 3: PIù COMBOBOX STATI
+IMMAGINE 4: WARNING
+
+7)in gENERI: di default, la sezione 'gENERI' presenta una comboBox in cui è possibile scegliere/inserire il nome genere su cui si vuole fare la ricerca; 
+8)è possibile scegliere anche più di uno genere attraverso il pulsante + che aggiunge, ogni volta che lo si clicca (fino ad un massimo di 9), una comboBox tesa ad ospitare un'altro genere da filtrare.
+9)è possibile scegliere tutti i generi in un unico colpo scegliendo l'opzione 'tutti i generi'
+10) se si prova a fare la ricerca lasciando la combobox 'Genere' vuota, compare un popup di errore che ti impone di inserire tutti i campi(ovvero, di inserire almeno un valore in ogni combobox relativa ad ogni sezione: le sezioni sono stati, generi e periodo)
+IMMAGINE 5: PIù COMBOBOX Generi
+IMMAGINE 4: WARNING
+
+11) in Periodo: la sezione 'Periodo' consente di scegliere (obbligatoriamente) una data iniziale ed una data finale, nel formato yyyy-mm-dd, attraverso delle combobox
+12) ABBIamo il cazzo immenso perchè l'anno si aggiorna a seconda dell'anno corrente.
+13) sono stati effetuati controlli sui giorni in relazione ai mesi (nel senso che, se si sceglie febbraio, è possibile andare dal giorno 1 al giorno 28; il software, poichè auto considera l'anno corrente, riconosce se l'anno è bisestile, ovvero riconosce se Febbraio ha 29 giorni piuttosto che 28)
+14) sulle date è stato effettuato un controllo che visualizza un Warning nel caso in cui data iniziale >= data finale
+IMMAGINE 6: DATE
+IMMAGINE 7: WARNING DATE
+
+13) Se non ci sono eventi per i filtri specificati (ovvero Stati e generi), viene visualizzato un popup con scritto 'Errore, non ci sono eventi disponibilo'
+IMMAGINE 8: NON CE N'è EVENTI
+
+14) uLTIMA SCHERMATA: permtte di visualizzare il responso relativo ai filtri inseriti nella schermata orecedente e presenta il pulsante 'Nuova Ricerca' che permette di tornare alla schermata filtraggio per effettuare una nuova ricerca
+IMMAGINE 9: RESPONSO
+</H1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## Software Utilizzati
 La lista di software & tools impiegati per realizzare la Filter-App è la seguente:
 * L'IDE [Eclipse](https://www.eclipse.org/downloads/), pacchetto [JDK](https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2020-12/R/eclipse-java-2020-12-R-win32-x86_64.zip), per la scrittura del codice dell'intero applicativo
@@ -321,11 +486,11 @@ La Filter-App 'The Last of Events' è stata sviluppata da:
 * [Kejvin Skiti](https://github.com/Kejvin)
 
 **Contributi e ruoli**
-Autore | Ruolo | Contributo
----- | ---- | ----
-Rocco Anzivino | Sviluppo filtro Stati, sviluppo statistica relativa al numero massimo degli eventi in ciascuno Stato, sviluppo Scanner Stati, sviluppo eccezioni e controlli, produzione JavaDoc, ottimizzazione ed estensione Parser e Controller, sviluppo della base del codice, sviluppo dell'intera GUI | contributo: 1/3
-Kevin Giusti | Sviluppo filtro periodo personalizzato, sviluppo statistiche relative a minimo, massimo e media eventi in un mese o periodo personalizzato a seconda degli Stati selezionati, sviluppo eccezioni e controlli, produzione JavaDoc, estensione Parser e Controller, produzione dell'intero readme, diagramma uml delle classi dell'api e dei casi d'uso, test JUnit 5 | contributo: 1/3
-Kejvin Skiti | Sviluppo filtro generi, sviluppo statistica relativa al numero massimo di eventi raggruppati per genere in ogni Stato, sviluppo Scanner generi, sviluppo eccezioni e controlli, estensione Parser e Controller, diagramma uml delle classi e intera produzione del diagramma uml di sequenza | contributo: 1/3
+Autore | Ruolo 
+---- | ---- 
+Rocco Anzivino | Sviluppo filtro Stati, sviluppo statistica relativa al numero massimo degli eventi in ciascuno Stato, sviluppo Scanner Stati, sviluppo eccezioni e controlli, produzione JavaDoc, ottimizzazione ed estensione Parser e Controller, sviluppo della base del codice, sviluppo dell'intera GUI 
+Kevin Giusti | Sviluppo filtro periodo personalizzato, sviluppo statistiche relative a minimo, massimo e media eventi in un mese o periodo personalizzato a seconda degli Stati selezionati, sviluppo eccezioni e controlli, produzione JavaDoc, estensione Parser e Controller, produzione dell'intero readme, diagramma uml delle classi dell'api e dei casi d'uso, test JUnit 5
+Kejvin Skiti | Sviluppo filtro generi, sviluppo statistica relativa al numero massimo di eventi raggruppati per genere in ogni Stato, sviluppo Scanner generi, sviluppo eccezioni e controlli, estensione Parser e Controller, diagramma uml delle classi e intera produzione del diagramma uml di sequenza
 
 **Nota:** il numero di `commit` effettuati da ciascun membro del team **non** è indice del contributo apportato allo sviluppo dell'applicativo poichè, impiegando il software TeamViewer, molto frequentemente è accaduto che l'operazione di `push` venisse effettuata dal pc ospitante la condivisione dello schermo anche se, effettivamente, lo sviluppo del codice fosse imputabile all'operato di più persone.
 
