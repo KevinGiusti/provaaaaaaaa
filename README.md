@@ -81,7 +81,7 @@ Per concludere, nel caso si dovesse preferire l'esecuzione di 'The Last of Event
 **Nota:** l'installazione del `font` viene eseguita, senza impedimenti di alcun genere, su ogni `SO`.
 
 
-## Considerazioni Necessarie Relative All'Impiego Dell'App
+## Considerazioni Necessarie
 
 **IMPORTANTE:** Per motivi legati all'impossibilità, da parte degli sviluppatori, di divulgare una chiave ottenuta mediante previa registrazione, prima di poter impiegare l'Applicativo 'The Last of Events', indipendentemente dal fatto che si favorisca l'approccio tramite `Postman` o tramite `GUI`, è necessario accedere alla cartella `resources`, reperibile attraverso il percorso `progetto-OOP > ticketmaster > resources`, e modificare il file `APIKey.txt`, inizialmente vuoto per ogni utente che esegue l'operazione di `clone` del progetto, inserendo la propria `key` gratuita ottenuta mediante registrazione presso il sito [TM Developers](https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/);
 
