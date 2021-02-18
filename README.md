@@ -5,7 +5,7 @@
 ## Sommario:
 - [Introduzione](#introduzione)
 - [Installazione](#installazione)
-- [Struttura API Ticketmaster](#configurazione-api-ticketmaster)
+- [Struttura API Ticketmaster](#struttura-api-ticketmaster)
 - [Configurazione](#configurazione)
 - [UML](#uml)
   - [Use Case Diagram](#use-Case-diagram)
